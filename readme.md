@@ -63,6 +63,46 @@
 
    This script will allow you to chat with the OpenAI model in a continuous loop. Simply type your message, and the assistant will respond. Type "exit" to end the conversation.
 
+## For Llama Deploy
+
+Ollama is a platform that simplifies the deployment and management of large language models (LLMs), like Llama, on your local machine. Here's how you can set up and interact with Llama models using Ollama.
+
+#### 1. Install Ollama
+
+To begin using Ollama, you'll need to install it. You can download and install it for your platform from the official [Ollama website](https://ollama.com/) or use package managers.
+
+- **For macOS** (via Homebrew):
+
+```
+bash
+
+
+Copy code
+brew install ollama
+```
+
+- **For Windows**:
+
+You can download the Windows installer from [Ollama's download page](https://ollama.com/) and follow the instructions.
+
+#### 2. Start Llama Model with Ollama
+
+Once Ollama is installed, you can easily run Llama models locally. For example, to run Llama 3.1 or Llama 3.2, use the following commands in your terminal:
+
+```
+ollama run llama3.1
+```
+
+or
+
+```
+ollama run llama3.2
+```
+
+These commands will load the Llama model and allow you to interact with it.
+
+[And here is the model list for you can download and run](https://ollama.com/library)
+
 ## Code Breakdown
 
 ### `claude_api_call.py`

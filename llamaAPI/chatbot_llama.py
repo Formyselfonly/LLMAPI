@@ -1,4 +1,5 @@
 import requests
+
 def llama_chatbot(model,messages):
     url="http://localhost:11434/api/chat"
     payload={
@@ -22,8 +23,8 @@ def llama_chatbot(model,messages):
         try:
             data = response.json()
             # Extract assistant response
-            # assistant_message = data.get("message", {}).get("content", "No response received")
-            assistant_message = data.get("message").get("content")
+            assistant_message = data.get("message", {}).get("content", "No response received")
+            # assistant_message = data.get("message").get("content")
             # print("Assistant Response:", assistant_message)
             # Append the assistant's response to messages for continuity
             # messages.append({"role": "assistant", "content": assistant_message})
@@ -36,15 +37,20 @@ def llama_chatbot(model,messages):
         return None
 
 def muti_chat(model):
+
     messages=[
-        {"role":"User","content":"You are a helpful assistant"}
+        {"role": "assistant", "content": "Hello,How can I assist you?"},
+        # {"role":"user","content":"You are a helpful assistant llama"}
     ]
 
     while True:
-        user_input=input("User:")
+        user_input=input("user:")
+        # print(type(user_input))
         messages.append({"role":"user","content":user_input})
+        # print(messages)
         assistant_response=llama_chatbot(model,messages)
         messages.append({"role":"assistant","content":assistant_response})
+        # print(messages)
         if assistant_response:
             print("Assistant:",assistant_response)
         if user_input.lower()=="exit":
