@@ -1,0 +1,5 @@
+anthropic
+dotenv
+google-generativeai
+requests
+openai
