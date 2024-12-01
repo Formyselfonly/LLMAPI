@@ -4,7 +4,8 @@ model="llama3.1"
 prompt="Who are u?"
 messages=[
     {"role":"assistant","content":"I am your powerful and friendly assistant"},
-    {"role":"user","content":"What is the answer of 1+5x5?"}
+    # {"role":"user","content":"What is the answer of 1+5x5?"}
+    {"role":"user","content":"Translate into Chinese:What's wrong with u?"}
 ]
 
 def llama_generate(model,prompt):
