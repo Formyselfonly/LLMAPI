@@ -1,3 +1,4 @@
 .env
 /practice
 /CodingTest_Prepare
+.fastapi_tutorial_venv/
