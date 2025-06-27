@@ -29,7 +29,7 @@ The final prompt you output should adhere to the following structure below. Do n
 
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
 
-def prompt_generator(aim,step,rule,constrain,example):
+def prompt_generator(aim="",step="",rule="",constrain="",example=""):
     response = client.chat.completions.create(
         # deepseek-chat
         # deepseek-reasoner
@@ -69,11 +69,16 @@ def prompt_generator(aim,step,rule,constrain,example):
     return response.choices[0].message.content
 
 prompt_for_translate=prompt_generator(
-    aim="我想要实现多语言翻译的功能，无论什么语言，都为我翻译为中文",
-    step="1.识别用户输入的语言 2.将用户输入的语言精确的翻译为中文",
-    rule="请确保翻译的准确性，在语境和意境都要完美翻译",
-    constrain="不要增加多余的内容，只为我翻译内容即可",
-    example="userinput:Who are u?  outputbyyu:你是谁？"
+    # aim="我想要实现多语言翻译的功能，无论什么语言，都为我翻译为中文",
+    # step="1.识别用户输入的语言 2.将用户输入的语言精确的翻译为中文",
+    # rule="请确保翻译的准确性，在语境和意境都要完美翻译",
+    # constrain="不要增加多余的内容，只为我翻译内容即可",
+    # example="userinput:Who are u?  outputbyyu:你是谁？"
+    aim = "我想要实现一个帮我进行需求分析的AI，你需要首先引导用户进行要求描述，然后确认收集完毕后，根据这个要求先写一份1.功能&需求说明文档，从需求出发，分析出2.方案（即功能+模块），然后告诉我3.实现路径",
+    step = "1.识别用户意图 2.分析用户要求 3.一步一步引导用户要求 3.根据用户要求攥写功能&需求说明文档 4.根据功能&需求说明文档 进一步分析出方案文档（即功能+模块） 5.根据方案推倒出实现路径文档",
+    rule = "请确保工作的完整，一步一步地思考。确保引导用户说明完整需求，不断提示用户，用户自己确定后再编写文档",
+    constrain = "最好以markdown格式给出，有些地方可以用到表格图片。确保最终给出我 功能&需求说明文档+方案文档+实现路径文档",
+    # example = "userinput:Who are u?  outputbyyu:你是谁？"
 )
 print(prompt_for_translate)
 
